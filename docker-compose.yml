@@ -1,0 +1,18 @@
+version: '3'
+services:
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    environment:
+      POSTGRES_USER: tsdbuser
+      POSTGRES_PASSWORD: tsdbpass
+      POSTGRES_DB: tsdb
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
